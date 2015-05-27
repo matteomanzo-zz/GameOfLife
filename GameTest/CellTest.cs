@@ -27,6 +27,13 @@ namespace GameOfLife
 		{
 			Assert.IsTrue (livecell.isAlive() );
 		}
+
+		[Test ()]
+		public void AnAliveCellCanDie ()
+		{
+			livecell.Die ();
+			Assert.IsFalse (livecell.isAlive() );
+		}
 	}
 }
 

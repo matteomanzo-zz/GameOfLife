@@ -19,5 +19,10 @@ namespace GameOfLife
 
 			return false;
 		}
+
+		public void Die ()
+		{
+			_status = 0;
+		}
 	}
 }
