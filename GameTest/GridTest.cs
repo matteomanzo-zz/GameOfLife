@@ -11,14 +11,21 @@ namespace GameOfLife
 		[SetUp]
 		public void Init ()
 		{
-			
+		    grid = new Grid (9);	
 		}
 
 		[Test ()]
 		public void ContainsCells()
 		{
-			grid = new Grid (9);
 			Assert.IsInstanceOf<Cell> (grid.Contents(3));
+		}
+
+		[Test ()]
+		public void CanPlaceLivingCells()
+		{
+			grid.PlaceLivingCell(5);
+			Cell cell = grid.Contents(5);
+			Assert.IsTrue (cell.isAlive ());
 		}
 	}
 }

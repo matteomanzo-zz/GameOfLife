@@ -21,11 +21,18 @@ namespace GameOfLife
 			}
 		}
 
-		public Object Contents(int index)
+		public Cell Contents(int index)
 		{
 			return _grid[index];
 		}
 
+		public void PlaceLivingCell (int i)
+		{
+			_grid [i] = new Cell (1);
+//
+//			Cell cell = _grid [i];
+//			cell.Revive ();
+		}
 	}
 
 }
