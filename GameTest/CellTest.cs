@@ -7,11 +7,13 @@ namespace GameOfLife
 	public class CellTest
 	{
 		Cell cell;
+		Cell livecell;
 
 		[SetUp]
 		public void Init ()
 		{
 			cell = new Cell ();
+			livecell = new Cell (1);
 		}
 
 		[Test ()]
@@ -20,11 +22,11 @@ namespace GameOfLife
 			Assert.IsFalse (cell.isAlive());
 		}
 
-//		[Test ()]
-//		public void ShouldShowAnAsterixIconIfAlive ()
-//		{
-//			Assert.IsTrue (aliveCell.isAlive() );
-//		}
+		[Test ()]
+		public void SomeCellsWillBeAlive ()
+		{
+			Assert.IsTrue (livecell.isAlive() );
+		}
 	}
 }
 
