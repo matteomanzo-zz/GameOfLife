@@ -6,32 +6,30 @@ namespace GameOfLife
 {
 	public class Grid
 	{
-		private Cell[] _grid;
+		private Cell[,] _grid;
 
-		public Grid (int numberOfCells)
+		public Grid (int width, int length)
 		{
-			_grid = new Cell[numberOfCells];
-			AddCells();
+			_grid = new Cell[length, width];
+			AddCells(width, length);
 		}
 
-		private void AddCells()
+		private void AddCells(int width, int length)
 		{
-			for (int i = 0; i < _grid.Length; i++) {
-				_grid [i] = new Cell ();
+			for (int i = 0; i < length; i++) {
+				for (int j = 0; j < width; j++)
+				_grid [i, j] = new Cell ();
 			}
 		}
 
-		public Cell Contents(int index)
+		public Cell Contents(int x, int y)
 		{
-			return _grid[index];
+			return _grid[x, y];
 		}
 
-		public void PlaceLivingCell (int i)
+		public void PlaceLivingCell (int x, int y)
 		{
-			_grid [i] = new Cell (1);
-//
-//			Cell cell = _grid [i];
-//			cell.Revive ();
+			_grid [x, y] = new Cell (1);
 		}
 	}
 
