@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameOfLife
 {
-	public class Grid<T>
+	public class Grid<T> where T : class
 	{
 		private T[,] _grid;
 		private T gridContent;
