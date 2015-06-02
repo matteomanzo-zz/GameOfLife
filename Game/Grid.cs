@@ -6,31 +6,29 @@ namespace GameOfLife
 {
 	public class Grid
 	{
-		private Cell[,] _grid;
+		private Object[,] _grid;
+		private Object gridContent;
 
-		public Grid (int width, int length)
+		public Grid (int width, int length, object content)
 		{
-			_grid = new Cell[length, width];
-			AddCells(width, length);
+			gridContent = content;
+			_grid = new Object[length, width];
+			AddContents(width, length);
 		}
 
-		private void AddCells(int width, int length)
+		private void AddContents(int width, int length)
 		{
 			for (int i = 0; i < length; i++) {
 				for (int j = 0; j < width; j++)
-				_grid [i, j] = new Cell ();
+				_grid [i, j] = gridContent ;
 			}
 		}
 
-		public Cell Contents(int x, int y)
+		public Object QueryContents(int x, int y)
 		{
 			return _grid[x, y];
 		}
-
-		public void PlaceLivingCell (int x, int y)
-		{
-			_grid [x, y] = new Cell (1);
-		}
+			
 	}
 
 }

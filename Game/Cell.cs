@@ -25,7 +25,7 @@ namespace GameOfLife
 			_status = 0;
 		}
 
-		public void Revive ()
+		public void Live ()
 		{
 			_status = 1;
 		}

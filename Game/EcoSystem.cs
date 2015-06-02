@@ -15,9 +15,15 @@ namespace GameOfLife
 
 		public string CheckCellStatus(int xcoord, int ycoord)
 		{
-			Cell cell = grid.Contents(xcoord, ycoord);
+			cell = (Cell)grid.QueryContents(xcoord, ycoord);
 			String status = cell.isAlive() ? "Alive" : "Dead";
 			return status;
+		}
+
+		public void PlaceLivingCell (int x, int y)
+		{
+			cell = (Cell)grid.QueryContents(x, y);
+			cell.Live();
 		}
 	}
 }

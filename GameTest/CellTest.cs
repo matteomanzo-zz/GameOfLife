@@ -36,9 +36,9 @@ namespace GameOfLife
 		}
 
 		[Test ()]
-		public void ADeadCellCanRevive ()
+		public void ADeadCellCanLive ()
 		{
-			cell.Revive ();
+			cell.Live ();
 			Assert.IsTrue (cell.isAlive() );
 		}
 	}

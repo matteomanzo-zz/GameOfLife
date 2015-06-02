@@ -10,13 +10,13 @@ namespace GameOfLife
 
 		static void Main (string[] args)
 		{
-			grid = MakeGrid (3, 3);
+			grid = MakeGrid (3, 3, new Cell());
 			ecosystem = new EcoSystem(grid);
 		}
 
-		static Grid MakeGrid (int length, int width)
+		static Grid MakeGrid (int length, int width, object contents)
 		{
-			Grid grid = new Grid (length, width);
+			Grid grid = new Grid (length, width, contents);
 			return grid;
 		}
 //
