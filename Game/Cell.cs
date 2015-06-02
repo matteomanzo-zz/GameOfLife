@@ -4,12 +4,7 @@ namespace GameOfLife
 {
 	public class Cell
 	{
-		private int _status;
-
-		public Cell (int status = 0)
-		{
-			_status = status;
-		}
+		private int _status = 0;
 
 		public bool isAlive ()
 		{

@@ -4,14 +4,12 @@ using System.Linq;
 
 namespace GameOfLife
 {
-	public class Grid<T> where T : class
+	public class Grid<T> where T : class, new()
 	{
 		private T[,] _grid;
-		private T gridContent;
 
-		public Grid (int width, int length, T content)
+		public Grid (int width, int length)
 		{
-			gridContent = content;
 			_grid = new T[length, width];
 			AddContents(width, length);
 		}
@@ -20,7 +18,7 @@ namespace GameOfLife
 		{
 			for (int i = 0; i < length; i++) {
 				for (int j = 0; j < width; j++)
-				_grid [i, j] = gridContent ;
+					_grid [i, j] = new T();
 			}
 		}
 

@@ -15,14 +15,15 @@ namespace GameOfLife
 		{
 			width = 3;
 			length = 3;
-			grid = MakeGrid (width, length, new Cell());
+			grid = MakeGrid (width, length);
 			ecosystem = new EcoSystem(grid);
+			ecosystem.PlaceLivingCell (1, 2);
 			DisplayGrid (grid);
 		}
 
-		static Grid<Cell> MakeGrid (int length, int width, Cell cell)
+		static Grid<Cell> MakeGrid (int length, int width)
 		{
-			grid = new Grid<Cell> (length, width, cell);
+			grid = new Grid<Cell> (length, width);
 			return grid;
 		}
 
