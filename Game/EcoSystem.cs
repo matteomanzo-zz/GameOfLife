@@ -25,6 +25,7 @@ namespace GameOfLife
 			cell = grid.QueryContents(x, y);
 			cell.Live();
 		}
+
 			
 	}
 }

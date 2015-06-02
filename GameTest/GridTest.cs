@@ -11,7 +11,7 @@ namespace GameOfLife
 		[SetUp]
 		public void Init ()
 		{
-			grid = new Grid<Cell> (3, 3, new Cell());	
+			grid = new Grid<Cell> (3, 3);	
 		}
 
 		[Test ()]

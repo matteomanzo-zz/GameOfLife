@@ -13,7 +13,8 @@ namespace GameOfLife
 		public void Init ()
 		{
 			cell = new Cell ();
-			livecell = new Cell (1);
+			livecell = new Cell ();
+			livecell.Live ();
 		}
 
 		[Test ()]

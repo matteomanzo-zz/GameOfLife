@@ -9,17 +9,28 @@ namespace GameOfLifeTest
 	{
 		EcoSystem ecosystem;
 
+		[SetUp]
+		public void Init ()
+		{
+			ecosystem = new EcoSystem(new Grid<Cell>(3,3));
+		}
+
 		[Test ()]
 		public void CanCheckCellStatus()
 		{
-			ecosystem = new EcoSystem(new Grid<Cell>(3,3, new Cell() ));
 			Assert.AreEqual("Dead", ecosystem.CheckCellStatus(1, 1));
 		}
 
 		[Test ()]
 		public void CanPlaceLivingCells()
 		{
-			ecosystem = new EcoSystem(new Grid<Cell>(3,3, new Cell() ));
+			ecosystem.PlaceLivingCell(1, 1);
+			Assert.AreEqual ("Alive", ecosystem.CheckCellStatus(1, 1));
+		}
+
+		[Test ()]
+		public void CellsWithFewerThanTwoLiveNeighboursDie()
+		{
 			ecosystem.PlaceLivingCell(1, 1);
 			Assert.AreEqual ("Alive", ecosystem.CheckCellStatus(1, 1));
 		}
