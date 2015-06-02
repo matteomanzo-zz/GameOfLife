@@ -33,6 +33,7 @@ namespace GameOfLifeTest
 		{
 			ecosystem.PlaceLivingCell(1, 1);
 			ecosystem.PlaceLivingCell (1, 0);
+			Assert.AreEqual ("Alive", ecosystem.CheckCellStatus(1, 1));
 			ecosystem.Refresh ();
 			Assert.AreEqual ("Dead", ecosystem.CheckCellStatus(1, 1));
 		}

@@ -37,14 +37,19 @@ namespace GameOfLife
 			for (var i = 0; i < grid.gridLength; i++)
 			{
 				for (var j = 0; j < grid.gridWidth; j++) {
+					
 					Cell cell = grid.QueryContents (i, j);
 					int count = CountNeighbours(i, j);
-					//if count < 3 then cell.Die();
+
+					if (count < 3) 
+					{
+						cell.Die ();
+					}
 				}
 			}
 		}
 
-		private int CountNeighbours(xcoord, ycoord)
+		private int CountNeighbours(int i, int j)
 		{
 			int count = 0;
 
@@ -52,17 +57,18 @@ namespace GameOfLife
 				
 			{
 
-				if( k >= (i-1) && <= (i+1) && > 0 && < gridLength -1) {
+				if( k >= (i-1) && k <= (i+1) && k > 0 && k < grid.gridLength -1) {
 					
-				  for (var l = 0; l < grid.gridWidth; l++) {
+					for (var l = 0; l < grid.gridWidth; l++) {
 					
-						if (l >= (j-1) && <=(j+1) && > 0 && < gridWidth -1)
-
-					//find neighbour;
-					//neighbour = grid.QueryContents();
-					//count++ if neighbour.isAlive();
+						if (l >= (j - 1) && l <= (j + 1) && l > 0 && l < grid.gridWidth - 1) {
+							Cell neighbour = grid.QueryContents(k, l);
+							if (neighbour.isAlive()) {count++;}
+						}
+					}
 				}
 			}
+			return count;
 
 		}
 		//private void PopulateCellsLive()
