@@ -12,14 +12,14 @@ namespace GameOfLifeTest
 		[Test ()]
 		public void CanCheckCellStatus()
 		{
-			ecosystem = new EcoSystem(new Grid(3,3, new Cell() ));
+			ecosystem = new EcoSystem(new Grid<Cell>(3,3, new Cell() ));
 			Assert.AreEqual("Dead", ecosystem.CheckCellStatus(1, 1));
 		}
 
 		[Test ()]
 		public void CanPlaceLivingCells()
 		{
-			ecosystem = new EcoSystem(new Grid(3,3, new Cell() ));
+			ecosystem = new EcoSystem(new Grid<Cell>(3,3, new Cell() ));
 			ecosystem.PlaceLivingCell(1, 1);
 			Assert.AreEqual ("Alive", ecosystem.CheckCellStatus(1, 1));
 		}

@@ -6,12 +6,12 @@ namespace GameOfLife
 	[TestFixture ()]
 	public class GridTest
 	{
-		Grid grid;
+		Grid<Cell> grid;
 
 		[SetUp]
 		public void Init ()
 		{
-			grid = new Grid (3, 3, new Cell());	
+			grid = new Grid<Cell> (3, 3, new Cell());	
 		}
 
 		[Test ()]

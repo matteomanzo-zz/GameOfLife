@@ -5,7 +5,7 @@ namespace GameOfLife
 {
 	public class Program
 	{
-		static Grid grid;
+		static Grid<Cell> grid;
 		static EcoSystem ecosystem;
 
 		static void Main (string[] args)
@@ -14,9 +14,9 @@ namespace GameOfLife
 			ecosystem = new EcoSystem(grid);
 		}
 
-		static Grid MakeGrid (int length, int width, object contents)
+		static Grid<Cell> MakeGrid (int length, int width, Cell cell)
 		{
-			Grid grid = new Grid (length, width, contents);
+			grid = new Grid<Cell> (length, width, cell);
 			return grid;
 		}
 //

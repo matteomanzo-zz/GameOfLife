@@ -4,15 +4,15 @@ using System.Linq;
 
 namespace GameOfLife
 {
-	public class Grid
+	public class Grid<T>
 	{
-		private Object[,] _grid;
-		private Object gridContent;
+		private T[,] _grid;
+		private T gridContent;
 
-		public Grid (int width, int length, object content)
+		public Grid (int width, int length, T content)
 		{
 			gridContent = content;
-			_grid = new Object[length, width];
+			_grid = new T[length, width];
 			AddContents(width, length);
 		}
 
@@ -24,7 +24,7 @@ namespace GameOfLife
 			}
 		}
 
-		public Object QueryContents(int x, int y)
+		public T QueryContents(int x, int y)
 		{
 			return _grid[x, y];
 		}
