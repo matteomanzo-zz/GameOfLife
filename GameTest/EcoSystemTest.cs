@@ -32,7 +32,9 @@ namespace GameOfLifeTest
 		public void CellsWithFewerThanTwoLiveNeighboursDie()
 		{
 			ecosystem.PlaceLivingCell(1, 1);
-			Assert.AreEqual ("Alive", ecosystem.CheckCellStatus(1, 1));
+			ecosystem.PlaceLivingCell (1, 0);
+			ecosystem.Refresh ();
+			Assert.AreEqual ("Dead", ecosystem.CheckCellStatus(1, 1));
 		}
 	}
 }

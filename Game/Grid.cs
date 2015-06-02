@@ -7,17 +7,21 @@ namespace GameOfLife
 	public class Grid<T> where T : class, new()
 	{
 		private T[,] _grid;
+		public int gridLength;
+		public int gridWidth;
 
 		public Grid (int width, int length)
 		{
+			gridLength = length;
+			gridWidth = width;
 			_grid = new T[length, width];
-			AddContents(width, length);
+			AddContents();
 		}
 
-		private void AddContents(int width, int length)
+		private void AddContents()
 		{
-			for (int i = 0; i < length; i++) {
-				for (int j = 0; j < width; j++)
+			for (int i = 0; i < gridLength; i++) {
+				for (int j = 0; j < gridWidth; j++)
 					_grid [i, j] = new T();
 			}
 		}
