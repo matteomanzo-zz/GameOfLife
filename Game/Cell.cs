@@ -29,5 +29,12 @@ namespace GameOfLife
 		{
 			_status = 1;
 		}
+
+		public string DisplaysStatus()
+		{
+			string display = isAlive () ? "*" : "_";
+			return display;
+		}
+
 	}
 }

@@ -41,6 +41,18 @@ namespace GameOfLife
 			cell.Live ();
 			Assert.IsTrue (cell.isAlive() );
 		}
+
+		[Test ()]
+		public void DeadCellShouldReturnAnUnderscore ()
+		{
+			Assert.AreEqual (cell.DisplaysStatus (), "_");
+		}
+
+		[Test ()]
+		public void AliveCellShouldReturnAnAsterix ()
+		{
+			Assert.AreEqual (livecell.DisplaysStatus (), "*");
+		}
 	}
 }
 
