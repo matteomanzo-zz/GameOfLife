@@ -37,7 +37,6 @@
     <Compile Include="Grid.cs">
       <DependentUpon>Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="index.cs" />
     <Compile Include="EcoSystem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

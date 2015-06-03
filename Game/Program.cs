@@ -98,11 +98,14 @@ namespace GameOfLife
 
 		static void AnimateGrid()
 		{
+			int counter = 0;
 			do
 			{
 				Console.Clear();
 				DisplayGrid (grid);
+				Console.WriteLine(counter);
 				ecosystem.Refresh();
+				counter ++;
 				Thread.Sleep(250);
 			} while (true);
 		}
