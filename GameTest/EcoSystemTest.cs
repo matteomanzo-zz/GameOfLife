@@ -38,5 +38,6 @@ namespace GameOfLifeTest
 			Assert.AreEqual ("Dead", ecosystem.CheckCellStatus(1, 1));
 		}
 	}
+
 }
 

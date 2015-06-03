@@ -39,39 +39,17 @@ namespace GameOfLife
 				for (var j = 0; j < grid.gridWidth; j++) {
 					
 					Cell cell = grid.QueryContents (i, j);
-					int count = CountNeighbours(i, j);
+					int countNeighbouringCells = CountNeighbours(i, j);
 
-					if (count < 3) 
+					if (countNeighbouringCells < 3) 
 					{
 						cell.Die ();
 					}
 				}
 			}
 		}
-
-		private int CountNeighbours(int i, int j)
-		{
-			int count = 0;
-
-			for (var k = 0; k < grid.gridLength; k++)
-				
-			{
-
-				if( k >= (i-1) && k <= (i+1) && k > 0 && k < grid.gridLength -1) {
-					
-					for (var l = 0; l < grid.gridWidth; l++) {
-					
-						if (l >= (j - 1) && l <= (j + 1) && l > 0 && l < grid.gridWidth - 1) {
-							Cell neighbour = grid.QueryContents(k, l);
-							if (neighbour.isAlive()) {count++;}
-						}
-					}
-				}
-			}
-			return count;
-
-		}
-		//private void PopulateCellsLive()
+			
+		//private void PopulatedCellsLive()
 		//		{
 		//
 		//		}
@@ -85,6 +63,29 @@ namespace GameOfLife
 		//		{
 		//
 		//		}
+
+		private int CountNeighbours(int i, int j)
+		{
+			int count = 0;
+
+			for (var k = 0; k < grid.gridLength; k++)
+
+			{
+
+				if( k!= i && k >= (i-1) && k <= (i+1) && k > 0 && k < grid.gridLength -1) {
+
+					for (var l = 0; l < grid.gridWidth; l++) {
+
+						if (l!= j && l >= (j - 1) && l <= (j + 1) && l > 0 && l < grid.gridWidth - 1) {
+							Cell neighbour = grid.QueryContents(k, l);
+							if (neighbour.isAlive()) {count++;}
+						}
+					}
+				}
+			}
+			return count;
+
+		}
 
 	}
 }
