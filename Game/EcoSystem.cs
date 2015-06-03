@@ -29,25 +29,32 @@ namespace GameOfLife
 			
 		public void Refresh ()
 		{
-			UnderpopulatedCellsDie ();
+			CheckNeighbouringStatus ();
 		}
 
-		private void UnderpopulatedCellsDie()
+		private void UnderpopulatedCellsDie(Cell cell, int numberOfLiveNeighbours)
+		{
+			if (numberOfLiveNeighbours < 2) { cell.Die ();}
+		}
+		
+		private void CheckNeighbouringStatus ()
 		{
 			for (var i = 0; i < grid.gridLength; i++)
-			{
-				for (var j = 0; j < grid.gridWidth; j++) {
-					
-					Cell cell = grid.QueryContents (i, j);
-					int countNeighbouringCells = CountNeighbours(i, j);
+				{
+					for (var j = 0; j < grid.gridWidth; j++) {
 
-					if (countNeighbouringCells < 3) 
-					{
-						cell.Die ();
-					}
+					Cell cell = grid.QueryContents (i, j);
+				int numberOfLiveNeighbours = CountNeighbours(i, j);
+				ApplyRules(cell, numberOfLiveNeighbours);
 				}
 			}
 		}
+		
+	private void ApplyRules(Cell cell, int numberOfLiveNeighbours)
+	{
+		UnderpopulatedCellsDie(cell, numberOfLiveNeighbours);
+	}
+
 			
 		//private void PopulatedCellsLive()
 		//		{
