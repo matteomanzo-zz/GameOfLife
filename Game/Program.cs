@@ -71,6 +71,13 @@ namespace GameOfLife
 			ecosystem.PlaceLivingCell (7, 4);
 			ecosystem.PlaceLivingCell (7, 5);
 			ecosystem.PlaceLivingCell (7, 6);
+			ecosystem.PlaceLivingCell (2, 4);
+			ecosystem.PlaceLivingCell (3, 5);
+			ecosystem.PlaceLivingCell (3, 6);
+			ecosystem.PlaceLivingCell (3, 10);
+			ecosystem.PlaceLivingCell (2, 11);
+			ecosystem.PlaceLivingCell (1, 2);
+			ecosystem.PlaceLivingCell (1, 7);
 			ecosystem.PlaceLivingCell (7, 10);
 			ecosystem.PlaceLivingCell (7, 11);
 			ecosystem.PlaceLivingCell (7, 12);
