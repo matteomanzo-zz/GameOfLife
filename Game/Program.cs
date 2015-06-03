@@ -18,6 +18,31 @@ namespace GameOfLife
 			length = 17;
 			grid = MakeGrid (width, length);
 			ecosystem = new EcoSystem(grid);
+			PlaceCells ();
+			AnimateGrid ();
+		}
+
+		static Grid<Cell> MakeGrid (int length, int width)
+		{
+			grid = new Grid<Cell> (length, width);
+			return grid;
+		}
+
+		static void DisplayGrid(Grid<Cell> grid)
+		{
+			for (var i = 0; i < length; i++)
+			{
+				StringBuilder row = new StringBuilder();
+				for (var j = 0; j < width; j++) {
+					Cell cell = grid.QueryContents (i, j);
+					row.Append (cell.DisplaysStatus());
+				}
+				Console.WriteLine(row);
+			}
+		}
+
+		static void PlaceCells ()
+		{
 			ecosystem.PlaceLivingCell (2, 4);
 			ecosystem.PlaceLivingCell (2, 5);
 			ecosystem.PlaceLivingCell (2, 6);
@@ -69,26 +94,6 @@ namespace GameOfLife
 			ecosystem.PlaceLivingCell (14, 10);
 			ecosystem.PlaceLivingCell (14, 11);
 			ecosystem.PlaceLivingCell (14, 12);
-			AnimateGrid ();
-		}
-
-		static Grid<Cell> MakeGrid (int length, int width)
-		{
-			grid = new Grid<Cell> (length, width);
-			return grid;
-		}
-
-		static void DisplayGrid(Grid<Cell> grid)
-		{
-			for (var i = 0; i < length; i++)
-			{
-				StringBuilder row = new StringBuilder();
-				for (var j = 0; j < width; j++) {
-					Cell cell = grid.QueryContents (i, j);
-					row.Append (cell.DisplaysStatus());
-				}
-				Console.WriteLine(row);
-			}
 		}
 
 		static void AnimateGrid()
