@@ -50,21 +50,16 @@ namespace GameOfLife
 			}
 		}
 		
-	private void ApplyRules(Cell cell, int numberOfLiveNeighbours)
-	{
-		UnderpopulatedCellsDie(cell, numberOfLiveNeighbours);
-	}
+		private void ApplyRules(Cell cell, int numberOfLiveNeighbours)
+		{
+			UnderpopulatedCellsDie(cell, numberOfLiveNeighbours);
+			OverCrowdedCellsDie (cell, numberOfLiveNeighbours);
+		}
 
-			
-		//private void PopulatedCellsLive()
-		//		{
-		//
-		//		}
-
-		//private void OverCrowdedCellsDie()
-		//		{
-		//
-		//		}
+		private void OverCrowdedCellsDie(Cell cell, int numberOfLiveNeighbours)
+		{
+			if (numberOfLiveNeighbours > 3) { cell.Die ();}
+		}
 
 		//private void PopulatedCellsRevive()
 		//		{
@@ -91,9 +86,7 @@ namespace GameOfLife
 				}
 			}
 			return count;
-
 		}
-
 	}
 }
 
