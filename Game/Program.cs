@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using GameOfLife;
+using System.Threading;
 
 namespace GameOfLife
 {
@@ -18,7 +19,7 @@ namespace GameOfLife
 			grid = MakeGrid (width, length);
 			ecosystem = new EcoSystem(grid);
 			ecosystem.PlaceLivingCell (1, 2);
-			DisplayGrid (grid);
+			AnimateGrid ();
 		}
 
 		static Grid<Cell> MakeGrid (int length, int width)
@@ -40,9 +41,16 @@ namespace GameOfLife
 			}
 		}
 
-//		public void AnimateGrid()
-//		{
-//		}
+		static void AnimateGrid()
+		{
+			do
+			{
+				Console.Clear();
+				DisplayGrid (grid);
+				ecosystem.Refresh();
+				Thread.Sleep(250);
+			} while (true);
+		}
 
 	}
 }
