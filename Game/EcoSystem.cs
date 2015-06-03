@@ -30,11 +30,7 @@ namespace GameOfLife
 		public void Refresh ()
 		{
 			CheckNeighbouringStatus ();
-		}
-
-		private void UnderpopulatedCellsDie(Cell cell, int numberOfLiveNeighbours)
-		{
-			if (numberOfLiveNeighbours < 2) { cell.Die ();}
+			UpdateCells();
 		}
 		
 		private void CheckNeighbouringStatus ()
@@ -43,30 +39,14 @@ namespace GameOfLife
 				{
 					for (var j = 0; j < grid.gridWidth; j++) {
 
-					Cell cell = grid.QueryContents (i, j);
-				int numberOfLiveNeighbours = CountNeighbours(i, j);
-				ApplyRules(cell, numberOfLiveNeighbours);
+					Cell currentCell = grid.QueryContents (i, j);
+					int numberOfLiveNeighbours = CountNeighbours(currentCell, i, j);
+					ApplyRules(currentCell, numberOfLiveNeighbours);
 				}
 			}
 		}
-		
-		private void ApplyRules(Cell cell, int numberOfLiveNeighbours)
-		{
-			UnderpopulatedCellsDie(cell, numberOfLiveNeighbours);
-			OverCrowdedCellsDie (cell, numberOfLiveNeighbours);
-		}
 
-		private void OverCrowdedCellsDie(Cell cell, int numberOfLiveNeighbours)
-		{
-			if (numberOfLiveNeighbours > 3) { cell.Die ();}
-		}
-
-		//private void PopulatedCellsRevive()
-		//		{
-		//
-		//		}
-
-		private int CountNeighbours(int i, int j)
+		public int CountNeighbours(Cell currentCell, int i, int j)
 		{
 			int count = 0;
 
@@ -74,20 +54,61 @@ namespace GameOfLife
 
 			{
 
-				if( k!= i && k >= (i-1) && k <= (i+1) && k > 0 && k < grid.gridLength -1) {
+				if(k >= (i-1) && k <= (i+1) && k >= 0 && k <= grid.gridLength -1) {
 
 					for (var l = 0; l < grid.gridWidth; l++) {
 
-						if (l!= j && l >= (j - 1) && l <= (j + 1) && l > 0 && l < grid.gridWidth - 1) {
+						if (l >= (j - 1) && l <= (j + 1) && l >= 0 && l <= grid.gridWidth - 1) {
 							Cell neighbour = grid.QueryContents(k, l);
-							if (neighbour.isAlive()) {count++;}
+							if (neighbour != currentCell && neighbour.isAlive()) {count++;}
 						}
 					}
 				}
 			}
 			return count;
 		}
-	}
+		
+		private void ApplyRules(Cell currentCell, int numberOfLiveNeighbours)
+		{
+			PopulatedCellsRevive (currentCell, numberOfLiveNeighbours);
+			UnderpopulatedCellsDie(currentCell, numberOfLiveNeighbours);
+			OverCrowdedCellsDie (currentCell, numberOfLiveNeighbours);
+		}
+
+		private void UnderpopulatedCellsDie(Cell currentCell, int numberOfLiveNeighbours)
+		{
+			if (numberOfLiveNeighbours < 2) { currentCell.KillNextCycle ();}
+		}
+
+		private void OverCrowdedCellsDie(Cell currentCell, int numberOfLiveNeighbours)
+		{
+			if (numberOfLiveNeighbours > 3) { currentCell.KillNextCycle ();}
+		}
+
+		private void PopulatedCellsRevive(Cell currentCell, int numberOfLiveNeighbours)
+		{
+			if (numberOfLiveNeighbours == 3) { currentCell.ReviveNextCycle ();}
+		}
+
+		private void UpdateCells()
+		{
+			for (var i = 0; i < grid.gridLength; i++)
+			{
+				for (var j = 0; j < grid.gridWidth; j++) {
+					Cell currentCell = grid.QueryContents (i, j);
+					if(currentCell.IsAliveNextCycle())
+					{
+						currentCell.Live();
+					}
+					else
+					{
+						currentCell.Die();
+					}
+				}
+			}
+		}
+
+	}		
 }
 
 

@@ -5,14 +5,16 @@ namespace GameOfLife
 	public class Cell
 	{
 		private int _status = 0;
+		public int _nextStatus = 0;
 
 		public bool isAlive ()
 		{
-			if (_status == 1) {
-				return true;
-			}
+			return _status == 1 ? true : false;
+		}
 
-			return false;
+		public bool IsAliveNextCycle()
+		{
+			return _nextStatus == 1 ? true : false;
 		}
 
 		public void Die ()
@@ -23,6 +25,16 @@ namespace GameOfLife
 		public void Live ()
 		{
 			_status = 1;
+		}
+
+		public void KillNextCycle()
+		{
+			_nextStatus = 0;
+		}
+
+		public void ReviveNextCycle()
+		{
+			_nextStatus = 1;
 		}
 
 		public string DisplaysStatus()
