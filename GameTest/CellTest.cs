@@ -44,9 +44,9 @@ namespace GameOfLife
 		}
 
 		[Test ()]
-		public void DeadCellShouldReturnAnUnderscore ()
+		public void DeadCellShouldReturnAnEmptySpace ()
 		{
-			Assert.AreEqual (cell.DisplaysStatus (), "_");
+			Assert.AreEqual (cell.DisplaysStatus (), " ");
 		}
 
 		[Test ()]

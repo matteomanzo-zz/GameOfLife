@@ -39,7 +39,7 @@ namespace GameOfLife
 
 		public string DisplaysStatus()
 		{
-			string display = isAlive () ? "*" : "_";
+			string display = isAlive () ? "*" : " ";
 			return display;
 		}
 
