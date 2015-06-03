@@ -35,10 +35,17 @@ namespace GameOfLife
 				StringBuilder row = new StringBuilder();
 				for (var j = 0; j < width; j++) {
 					Cell cell = grid.QueryContents (i, j);
-					row.Append (cell.DisplaysStatus());
+					String cellAppearance = DisplayCell(cell);
+					row.Append (cellAppearance);
 				}
 				Console.WriteLine(row);
 			}
+		}
+
+		static string DisplayCell (Cell cell)
+		{
+			string display = cell.isAlive () ? "*" : " ";
+			return display;
 		}
 
 		static void PlaceCells ()

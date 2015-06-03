@@ -37,11 +37,5 @@ namespace GameOfLife
 			_nextStatus = 1;
 		}
 
-		public string DisplaysStatus()
-		{
-			string display = isAlive () ? "*" : " ";
-			return display;
-		}
-
 	}
 }

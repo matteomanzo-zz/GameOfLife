@@ -42,18 +42,7 @@ namespace GameOfLife
 			cell.Live ();
 			Assert.IsTrue (cell.isAlive() );
 		}
-
-		[Test ()]
-		public void DeadCellShouldReturnAnEmptySpace ()
-		{
-			Assert.AreEqual (cell.DisplaysStatus (), " ");
-		}
-
-		[Test ()]
-		public void AliveCellShouldReturnAnAsterix ()
-		{
-			Assert.AreEqual (livecell.DisplaysStatus (), "*");
-		}
+			
 	}
 }
 
